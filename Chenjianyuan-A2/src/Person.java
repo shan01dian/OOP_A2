@@ -2,6 +2,7 @@ public class Person {
     private String name;
     private int age;
     private String contact;
+    //三个适合个人的实例变量
     public Person() {
         this.name = "";
         this.age = 0;
@@ -31,6 +32,7 @@ public class Person {
     public void setContact(String contact) {
         this.contact = contact;
     }
+    //添加了getter和setter
     @Override
     public String toString() {
         return "Person(name=" + name + ", age=" + age + ", contact=" + contact + ")";
