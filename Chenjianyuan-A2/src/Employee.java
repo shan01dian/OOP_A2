@@ -26,6 +26,7 @@ public class Employee extends Person {
     }
     @Override
     public String toString() {
-        return "Employee [job=" + job + ", employeeID=" + employeeID + "]";
+        String employee = super.toString() + ", job='" + job + "', employeeID='" + employeeID + "'";
+        return employee;
     }
 }

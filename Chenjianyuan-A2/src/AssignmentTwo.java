@@ -8,5 +8,6 @@ public class AssignmentTwo {
         Employee employee1 = new Employee();
         System.out.println(employee1);
         Employee employee2 = new Employee("nina",18,"12345678","Manager","114514");
+        System.out.println(employee2);
     }
 }
