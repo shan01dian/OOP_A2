@@ -2,13 +2,13 @@ public class Employee extends Person {
     private String job;
     private String employeeID;
 
-    public Employee(){
+    public Employee(){   //构造函数
         super();
         this.job = "";
         this.employeeID = "";
     }
     public Employee(String name,int age,String contact,String job,String employeeID){
-        super(name, age, contact);
+        super(name, age, contact);//调用Person类的参数
         this.job = job;
         this.employeeID = employeeID;
     }
