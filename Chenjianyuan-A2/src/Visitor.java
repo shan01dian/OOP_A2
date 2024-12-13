@@ -8,7 +8,7 @@ public class Visitor extends Person{
         this.visitType = "";
     }
     public Visitor(String name, int age, String contact,String visitDate, String visitType){
-        super(name, age, contact);
+        super(name, age, contact);//调用Person类的参数
         this.visitDate = visitDate;
         this.visitType = visitType;
     }
