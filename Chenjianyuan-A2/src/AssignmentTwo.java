@@ -18,4 +18,16 @@ public class AssignmentTwo {
         Ride ride2 = new Ride("Ferris Wheel", false, null);
         System.out.println(ride2);
     }
+    public void partThree(){
+    }
+    public void partFourA(){
+    }
+    public void partFourB(){
+    }
+    public void partFive(){
+    }
+    public void partSix(){
+    }
+    public void partSeven(){
+    }
 }
