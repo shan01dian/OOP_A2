@@ -1,5 +1,7 @@
 import java.util.*;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Ride implements RideInterface{
     private String rideName;//设备名称
@@ -7,6 +9,8 @@ public class Ride implements RideInterface{
     private Employee operator;//Employee类型，操作员
     private Queue<Visitor> waiting;//等待队列
     private LinkedList<Visitor> rideHistory;//游玩历史记录
+    private int maxRider;//每次循环最大乘客数量
+    private int numOfCycles;//设施运行次数
 
     public Ride(){
         this.rideName = "";
@@ -14,13 +18,17 @@ public class Ride implements RideInterface{
         this.operator = null;
         this.waiting = new LinkedList<>();//初始化队列
         this.rideHistory = new LinkedList<>();//初始化历史记录
+        this.maxRider = 5;// 默认每次最多 5 人
+        this.numOfCycles = 0;// 初始运行次数为 0
     }
-    public Ride(String rideName, boolean isOpen, Employee operator){
+    public Ride(String rideName, boolean isOpen, Employee operator,int maxRider){
         this.rideName = rideName;
         this.isOpen = isOpen;
         this.operator = operator;
         this.waiting = new LinkedList<>();//初始化队列
         this.rideHistory = new LinkedList<>();//初始化历史记录
+        this.maxRider = maxRider;
+        this.numOfCycles = 0;
     }
     public String getRideName(){
         return this.rideName;
@@ -78,7 +86,30 @@ public class Ride implements RideInterface{
 
     @Override
     public void runOneCycle() {
+        if(this.operator==null){
+            System.out.println(rideName + " cannot run because no operator is assigned.");
+            return;
+        }//检查是否有操作员
+        if (waiting.isEmpty()) {
+            System.out.println(rideName + "cannot run because the wait queue is empty.");
+            return;
+        }// 检查队列是否为空
+        int ridersToLoad = Math.min(maxRider, waiting.size());
+        if(ridersToLoad<1){
+            System.out.println(rideName + " won't work because there aren't enough visitors.");
+            return;
+        }
+        System.out.println("\n" + rideName + "Starts a loop..." );
+        for(int i=0; i<ridersToLoad; i++){
+            Visitor visitor = waiting.poll();// 从队列中移除游客
+            addVisitorToQueue(visitor); // 将游客添加到游玩历史记录
+        }
+        numOfCycles++; // 增加运行次数
+        System.out.println(rideName + "Done! This run received "+ ridersToLoad +" tourists. ");
 
+        }
+        public int getNumOfCycles(){
+            return numOfCycles;// 打印运行次数
     }
 
     @Override
@@ -129,9 +160,9 @@ public class Ride implements RideInterface{
     }// 打印游玩历史记录
 
     public void clearRideHistory(){
-        rideHistory.clear();// 清空历史记录
+        rideHistory.clear();
         System.out.println("The play history for "+rideName +" has been cleared.");
-    }
+    }// 清空历史记录
 
     public void sortRideHistory(){
         if(rideHistory.isEmpty()){

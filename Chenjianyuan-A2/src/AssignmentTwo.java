@@ -19,15 +19,22 @@ public class AssignmentTwo {
         System.out.println(visitor3);
         Visitor visitor4 = new Visitor("tomo",21,"1293429044","2024-10-11","Adult");
         System.out.println(visitor4);
-        Visitor visitor5 = new Visitor("tomotin",22,"1243242344","2024-10-11","Adult");
-        Ride ride1 = new Ride(" Roller Coaster", true, employee2);
+        Visitor visitor5 = new Visitor("tomorin",22,"1243242344","2024-10-11","Adult");
+        System.out.println(visitor5);
+        Visitor visitor6 = new Visitor("saya",22,"1243242344","2024-10-10","Adult");
+        Visitor visitor7 = new Visitor("rikki",17,"1432423444","2024-10-12","Child");
+        Visitor visitor8 = new Visitor("rana",20,"15465464644","2024-10-12","Adult");
+        Visitor visitor9 = new Visitor("rupa",21,"17899789784","2024-10-10","Adult");
+        Visitor visitor10 = new Visitor("subaru",19,"1272547344","2024-10-11","Adult");
+        Ride ride1 = new Ride(" Roller Coaster", true, employee2,4);
         System.out.println(ride1);
-        Ride ride2 = new Ride("Ferris Wheel", false, null);
+        Ride ride2 = new Ride("Ferris Wheel", false, null,0);
         System.out.println(ride2);
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFourA(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFourB(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
+        assignment.partFive(ride1, visitor1, visitor2, visitor3, visitor4, visitor5,visitor6,visitor7,visitor8,visitor9,visitor10);
     }
 
     private void partThree(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5) {
@@ -88,7 +95,23 @@ public class AssignmentTwo {
         System.out.println("\nPrinting ride history after sorting:");
         ride.printRideHistory();// 打印排序后的历史记录
     }
-    public void partFive(){
+    public void partFive(Ride ride, Visitor... visitors){
+        System.out.println("\n Part5, Run a Ride Cycle for " + ride.getRideName() +"\n");
+
+        for (Visitor visitor:visitors){
+            ride.addVisitorToHistory(visitor);
+        }// 添加游客到队列
+        System.out.println("\n Print visitors in the queue: ");
+        ride.printQueue(); // 打印当前队列
+
+        System.out.println("\n Run the loop once: ");
+        ride.runOneCycle(); // 运行一次循环
+
+        System.out.println("\n print visitors in the queue after the run: ");
+        ride.printQueue(); // 打印队列中剩余的游客
+
+        System.out.println("\n print your play history: ");
+        ride.printRideHistory(); // 打印游玩历史记录
     }
     public void partSix(){
     }
