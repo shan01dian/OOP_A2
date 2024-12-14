@@ -125,7 +125,7 @@ public class Ride implements RideInterface{
         while(iterator.hasNext()){
             System.out.println(iterator.next());
         }
-    }
+    }// 打印游玩历史记录
 
     @Override
     public String toString(){
