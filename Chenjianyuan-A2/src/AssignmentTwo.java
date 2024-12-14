@@ -26,6 +26,8 @@ public class AssignmentTwo {
         System.out.println(ride2);
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
+        AssignmentTwo assignment2 = new AssignmentTwo();
+        assignment.partFourA(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
     }
 
     private void partThree(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5) {
@@ -48,7 +50,24 @@ public class AssignmentTwo {
     }
 
 
-    public void partFourA(){
+    public void partFourA(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5){
+        System.out.println("\n Part4A, Queue: " + ride.getRideName()+"\n");
+        ride.addVisitorToHistory(visitor1);
+        ride.addVisitorToHistory(visitor2);
+        ride.addVisitorToHistory(visitor3);
+        ride.addVisitorToHistory(visitor4);
+        ride.addVisitorToHistory(visitor5);//添加游客到游玩历史记录
+
+        System.out.println("\nChecking if a visitor is in the ride history:");
+        ride.checkVisitorFromHistory(visitor1);
+        ride.checkVisitorFromHistory(new Visitor("unknown", 0, "0000000000", "2024-12-01", "Adult"));
+        //检查游客是否在游玩历史记录当中
+
+        System.out.println("\nNumber of visitors in the ride history:");
+        ride.numberOfVisitors();//打印游玩历史记录中的游客数量
+
+        System.out.println("\nPrinting all visitors in the ride history:");
+        ride.printRideHistory(); // 打印所有游玩历史记录
     }
     public void partFourB(){
     }
