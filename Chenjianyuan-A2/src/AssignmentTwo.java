@@ -26,8 +26,8 @@ public class AssignmentTwo {
         System.out.println(ride2);
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
-        AssignmentTwo assignment2 = new AssignmentTwo();
         assignment.partFourA(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
+        assignment.partFourB(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
     }
 
     private void partThree(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5) {
@@ -69,7 +69,24 @@ public class AssignmentTwo {
         System.out.println("\nPrinting all visitors in the ride history:");
         ride.printRideHistory(); // 打印所有游玩历史记录
     }
-    public void partFourB(){
+    public void partFourB(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5){
+        System.out.println("\n Part4B, Queue: " + ride.getRideName()+"\n");
+
+        ride.clearRideHistory();// 清空历史记录，避免重复添加
+
+        ride.addVisitorToHistory(visitor1);
+        ride.addVisitorToHistory(visitor2);
+        ride.addVisitorToHistory(visitor3);
+        ride.addVisitorToHistory(visitor4);
+        ride.addVisitorToHistory(visitor5);// 添加游客到游玩历史记录
+
+        System.out.println("\nPrinting ride history before sorting:");
+        ride.printRideHistory();// 打印排序前的历史记录
+
+        ride.sortRideHistory();// 对历史记录排序
+
+        System.out.println("\nPrinting ride history after sorting:");
+        ride.printRideHistory();// 打印排序后的历史记录
     }
     public void partFive(){
     }

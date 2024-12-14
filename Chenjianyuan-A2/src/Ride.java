@@ -1,6 +1,5 @@
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
+import java.util.Collections;
 
 public class Ride implements RideInterface{
     private String rideName;//设备名称
@@ -114,6 +113,8 @@ public class Ride implements RideInterface{
         return count;
     }// 获取游玩历史记录中游客的数量
 
+
+
     @Override
     public void printRideHistory() {
         if(rideHistory.isEmpty()){
@@ -126,6 +127,20 @@ public class Ride implements RideInterface{
             System.out.println(iterator.next());
         }
     }// 打印游玩历史记录
+
+    public void clearRideHistory(){
+        rideHistory.clear();// 清空历史记录
+        System.out.println("The play history for "+rideName +" has been cleared.");
+    }
+
+    public void sortRideHistory(){
+        if(rideHistory.isEmpty()){
+            System.out.println("Cannot sort if there is no ride history");
+            return;
+        }
+        Collections.sort(rideHistory,new VisitorComparator(){});
+        System.out.println(rideName+" Has been sorted by access date and type.");
+    } // 新增方法：对游玩历史记录排序
 
     @Override
     public String toString(){
