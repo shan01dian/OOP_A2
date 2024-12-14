@@ -20,7 +20,7 @@ public class AssignmentTwo {
         Visitor visitor4 = new Visitor("tomo",21,"1293429044","2024-10-11","Adult");
         System.out.println(visitor4);
         Visitor visitor5 = new Visitor("tomotin",22,"1243242344","2024-10-11","Adult");
-        Ride ride1 = new Ride("Roller Coaster", true, employee2);
+        Ride ride1 = new Ride(" Roller Coaster", true, employee2);
         System.out.println(ride1);
         Ride ride2 = new Ride("Ferris Wheel", false, null);
         System.out.println(ride2);
@@ -35,6 +35,16 @@ public class AssignmentTwo {
         ride.addVisitorToQueue(visitor3);
         ride.addVisitorToQueue(visitor4);
         ride.addVisitorToQueue(visitor5);//添加所有游客到队列
+
+        System.out.println("\n Queue after adding visitors:");
+        ride.printQueue();//打印当前队列
+
+        System.out.println("\n Remove the first visitor from the queue:");
+        ride.removeVisitorFromQueue();//从队列中删除第一个游客
+
+        System.out.println("\n Print the queue after removing the first visitor from the queue:");
+        ride.printQueue();
+
     }
 
 

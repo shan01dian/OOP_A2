@@ -6,6 +6,7 @@ public class Ride implements RideInterface{
     private boolean isOpen;//布尔值判断设施是否开启
     private Employee operator;//Employee类型，操作员
     private Queue<Visitor> waiting;//等待队列
+    private LinkedList<Visitor> rideHistory;
 
     public Ride(){
         this.rideName = "";
