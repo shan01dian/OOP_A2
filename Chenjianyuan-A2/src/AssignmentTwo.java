@@ -155,7 +155,7 @@ public class AssignmentTwo {
         System.out.println(ride4);//为part7创建新的ride
 
         String filename = "ride_history.csv";
-        ride4.exportRideHistory(filename); // 从文件中导入历史记录
+        ride4.importRideHistory(filename); // 从文件中导入历史记录
 
         System.out.println("\n The number of visitors imported: "+ ride4.numberOfVisitors());//打印导入后的游客数量
 
