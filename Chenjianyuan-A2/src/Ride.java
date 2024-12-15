@@ -2,6 +2,9 @@ import java.util.*;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Ride implements RideInterface{
     private String rideName;//设备名称
@@ -172,6 +175,24 @@ public class Ride implements RideInterface{
         Collections.sort(rideHistory,new VisitorComparator(){});
         System.out.println(rideName+" Has been sorted by access date and type.");
     } // 新增方法：对游玩历史记录排序
+
+    public void exportRideHistory(String filename) {
+        if(rideHistory.isEmpty()){
+            System.out.println("The history for "+ rideName + " is empty and cannot be exported.");
+            return;
+        }// 确保历史记录不为空
+        try(BufferedWriter writer=new BufferedWriter(new FileWriter(filename))){
+            for(Visitor visitor : rideHistory){
+                String record =  visitor.getName() + "," + visitor.getAge() + "," + visitor.getContact() +
+                        "," + visitor.getVisitDate() + "," + visitor.getVisitType();
+                writer.write(record);// 遍历历史记录中的游客并写入文件
+                writer.newLine();//换行
+            }
+            System.out.println("The play history for " +rideName + " has been successfully exported to the file:" + filename);
+        }catch(IOException e){
+            System.out.println("An error occurred exporting play history: " + e.getMessage ());
+        }
+    }
 
     @Override
     public String toString(){
