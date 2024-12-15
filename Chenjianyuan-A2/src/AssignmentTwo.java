@@ -9,8 +9,7 @@ public class AssignmentTwo {
         System.out.println(employee1);
         Employee employee2 = new Employee("nina",18,"12345678","Roller coaster operator","114514");
         System.out.println(employee2);
-        Employee employee3 = new Employee("saki",18,"18765432","Thunderstorm operator","1919810");
-        System.out.println(employee3);
+
         Visitor visitor0 = new Visitor();
         System.out.println(visitor0);
         Visitor visitor1 = new Visitor("anon",20,"1290380933","2024-10-10","Adult");
@@ -32,15 +31,16 @@ public class AssignmentTwo {
         System.out.println(ride1);
         Ride ride2 = new Ride("Ferris Wheel", false, null,0);
         System.out.println(ride2);
-        Ride ride3 = new Ride(" Thunderstorm", true, employee3,4);
-        System.out.println(ride3);
+
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFourA(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFourB(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFive(ride1, visitor1, visitor2, visitor3, visitor4, visitor5,visitor6,visitor7,visitor8,visitor9,visitor10);
-        assignment.partSix(ride3, visitor1, visitor2, visitor3, visitor4, visitor5);
+        assignment.partSix();
     }
+
+
 
     private void partThree(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5) {
         System.out.println("\n Part3, Queue: " + ride.getRideName()+"\n");
@@ -118,20 +118,32 @@ public class AssignmentTwo {
         System.out.println("\n print your play history: ");
         ride.printRideHistory(); // 打印游玩历史记录
     }
-    public void partSix(Ride ride, Visitor visitor1, Visitor visitor2, Visitor visitor3, Visitor visitor4, Visitor visitor5){
+    public void partSix(){
         System.out.println("\n Part6");
 
-        ride.clearRideHistory();// 清空历史记录，避免重复添加
-        ride.addVisitorToHistory(visitor1);
-        ride.addVisitorToHistory(visitor2);
-        ride.addVisitorToHistory(visitor3);
-        ride.addVisitorToHistory(visitor4);
-        ride.addVisitorToHistory(visitor5);// 添加游客到游玩历史记录
+
+        Employee employee3 = new Employee("saki",18,"18765432","Thunderstorm operator","1919810");
+        System.out.println(employee3);
+
+        Ride ride3 = new Ride(" Thunderstorm", true, employee3,4);
+        System.out.println(ride3);
+        //为part6新创建了ride
+        Visitor visitor01 = new Visitor("DingZhen", 19, "128675933", "2024-10-10", "Adult");
+        Visitor visitor02 = new Visitor("XueBao", 14, "12245734", "2024-10-11", "Child");
+        Visitor visitor03 = new Visitor("SheLi", 15, "112353459", "2024-10-10", "Child");
+        Visitor visitor04 = new Visitor("otto", 21, "16582625844", "2024-10-12", "Adult");
+        Visitor visitor05 = new Visitor("SunXiaochuan", 26, "12404780784", "2024-10-12", "Adult");
+        //part6新创建的visitor
+        ride3.addVisitorToHistory(visitor01);
+        ride3.addVisitorToHistory(visitor02);
+        ride3.addVisitorToHistory(visitor03);
+        ride3.addVisitorToHistory(visitor04);
+        ride3.addVisitorToHistory(visitor05);// 添加游客到游玩历史记录
         System.out.println("\nExport the following visitors to a file:");
-        ride.printRideHistory(); // 打印所有历史记录游客
+        ride3.printRideHistory(); // 打印所有历史记录游客
 
         String filename = "ride_history.csv";
-        ride.exportRideHistory(filename);// 将数据导出到文件
+        ride3.exportRideHistory(filename);// 将数据导出到文件
     }
     public void partSeven(){
     }
