@@ -38,6 +38,7 @@ public class AssignmentTwo {
         assignment.partFourB(ride1, visitor1, visitor2, visitor3, visitor4, visitor5);
         assignment.partFive(ride1, visitor1, visitor2, visitor3, visitor4, visitor5,visitor6,visitor7,visitor8,visitor9,visitor10);
         assignment.partSix();
+        assignment.partSeven();
     }
 
 
@@ -142,9 +143,24 @@ public class AssignmentTwo {
         System.out.println("\nExport the following visitors to a file:");
         ride3.printRideHistory(); // 打印所有历史记录游客
 
-        String filename = "ride_history.csv";
+        String filename = "D:\\OOP_A2\\OOP_A2\\Chenjianyuan-A2\\ride_history.csv";
         ride3.exportRideHistory(filename);// 将数据导出到文件
     }
     public void partSeven(){
+        System.out.println("\n Part7");
+        Employee employee4 = new Employee("KohaD",18,"158943002","Swing set operator","987654");
+        System.out.println(employee4);
+
+        Ride ride4 = new Ride(" Swing set", true, employee4,4);
+        System.out.println(ride4);//为part7创建新的ride
+
+        String filename = "ride_history.csv";
+        ride4.exportRideHistory(filename); // 从文件中导入历史记录
+
+        System.out.println("\n The number of visitors imported: "+ ride4.numberOfVisitors());//打印导入后的游客数量
+
+        System.out.println("\nImport the visitor's information: ");
+        ride4.printRideHistory(); // 打印导入后的所有游客信息
+
     }
 }

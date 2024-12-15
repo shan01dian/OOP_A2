@@ -1,3 +1,4 @@
+import java.io.BufferedReader;
 import java.util.*;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -5,6 +6,7 @@ import java.util.Queue;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
 
 public class Ride implements RideInterface{
     private String rideName;//设备名称
@@ -191,6 +193,31 @@ public class Ride implements RideInterface{
             System.out.println("The play history for " +rideName + " has been successfully exported to the file:" + filename);
         }catch(IOException e){
             System.out.println("An error occurred exporting play history: " + e.getMessage ());
+        }//将游玩历史记录（rideHistory）中的所有游客信息导出到一个 CSV 文件
+
+    }
+    public void importRideHistory(String filename) {
+        try(BufferedReader reader=new BufferedReader(new FileReader(filename))){
+            String line;
+            while ((line=reader.readLine())!=null){
+                String[] details = line.split(",");// 使用逗号分隔符分割每一行
+                if(details.length!=5){
+                    System.out.println("Skip invalid lines: " + line);
+                    continue;//跳过格式不正确的行
+                }
+                String name = details[0];
+                int age = Integer.parseInt(details[1]);
+                String contact = details[2];
+                String visitDate = details[3];
+                String visitType = details[4];
+                Visitor visitor = new Visitor(name, age, contact, visitDate, visitType);
+                rideHistory.add(visitor);// 添加到游玩历史记录
+            }
+            System.out.println(" Successfully imported play history from file "+ filename +"." );// 从文件中导入游玩历史记录
+        }catch (IOException e){
+            System.out.println("Error while reading file: " + e.getMessage ());//读取文件时报错
+        }catch (NumberFormatException e){
+            System.out.println("The data is in the wrong format and we can't parse the age: " + e.getMessage ());//数据格式报错
         }
     }
 
