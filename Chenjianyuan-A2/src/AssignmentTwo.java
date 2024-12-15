@@ -9,7 +9,6 @@ public class AssignmentTwo {
         System.out.println(employee1);
         Employee employee2 = new Employee("nina",18,"12345678","Roller coaster operator","114514");
         System.out.println(employee2);
-
         Visitor visitor0 = new Visitor();
         System.out.println(visitor0);
         Visitor visitor1 = new Visitor("anon",20,"1290380933","2024-10-10","Adult");
