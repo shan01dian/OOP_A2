@@ -138,7 +138,7 @@ public class AssignmentTwo {
         System.out.println("\nExport the following visitors to a file:");
         ride3.printRideHistory(); // 打印所有历史记录游客
 
-        String filename = "D:\\OOP_A2\\OOP_A2\\Chenjianyuan-A2\\ride_history.csv";
+        String filename = "Chenjianyuan-A2\\ride_history.csv";
         ride3.exportRideHistory(filename);// 将数据导出到文件
     }
     public void partSeven(){
